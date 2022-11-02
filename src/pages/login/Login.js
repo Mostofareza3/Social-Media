@@ -21,7 +21,9 @@ const Login = () => {
                   <Form>
                     <input type="text" />
                     <input type="text" />
-                    <button type="submit">Login</button>
+                    <button type="submit" className="blue_btn">
+                      Login
+                    </button>
                   </Form>
                 )}
               </Formik>
@@ -29,7 +31,7 @@ const Login = () => {
               <div className="sign_splitter"></div>
               <button className="blue_btn open_signup">Create Account</button>
             </div>
-            <Link to="/">
+            <Link to="/" className="sign_extra">
               <b>Create a page</b>
               for a celebrity, brand or business.
             </Link>
