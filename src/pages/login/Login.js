@@ -1,9 +1,24 @@
 import { Formik, Form } from "formik";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginInput from "../../components/inputs/loginInput/LoginInput";
 import "./style.css";
 
+const loginInfo = {
+  email: "",
+  password: "",
+};
+
 const Login = () => {
+  const [login, setLogin] = useState(loginInfo);
+  const { email, password } = login;
+
+  const handleLoginChange = (e) => {
+    e.preventDefault();
+    const { name, value } = e.target;
+    setLogin({ ...login, [name]: value });
+  };
+
   return (
     <div className="login">
       <div className="login_wrapper">
@@ -16,11 +31,27 @@ const Login = () => {
           </div>
           <div className="login-2">
             <div className="login-2_wrap">
-              <Formik>
+              <Formik
+                enableReinitialize
+                initialValues={{
+                  email,
+                  password,
+                }}
+              >
                 {(formik) => (
                   <Form>
-                    <input type="text" />
-                    <input type="text" />
+                    <LoginInput
+                      placeholder="Email address or phone number"
+                      type="text"
+                      name="email"
+                      onChange={handleLoginChange}
+                    />
+                    <LoginInput
+                      placeholder="Password"
+                      type="password"
+                      name="password"
+                      onChange={handleLoginChange}
+                    />
                     <button type="submit" className="blue_btn">
                       Login
                     </button>
