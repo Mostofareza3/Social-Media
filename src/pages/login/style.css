@@ -282,9 +282,7 @@
     height: 100vh;
     /* padding: 0 1rem; */
   }
-  /* .reg_line {
-    flex-direction: row !important;
-  } */
+
   .login-1 {
     display: flex;
     flex-direction: column;
