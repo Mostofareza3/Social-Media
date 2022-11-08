@@ -56,7 +56,8 @@
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   position: absolute;
-  top: -10px;
+  top: -9px;
+  /* transform: scale(3px); */
 }
 
 .input_error_desktop {

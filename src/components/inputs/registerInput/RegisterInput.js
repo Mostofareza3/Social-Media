@@ -11,7 +11,7 @@ const RegisterInput = ({ placeholder, bottom, ...props }) => {
   const view2 = useMediaQuery({
     query: "(min-width: 850px)",
   });
-  console.log(view2);
+
   const view3 = useMediaQuery({
     query: "(min-width: 1170px)",
   });

@@ -3,15 +3,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import LoginInput from "../inputs/loginInput/LoginInput";
+import SyncLoader from "react-spinners/SyncLoader";
+import axios from "axios";
+import BACKEND_URL from "../../utils/backendUrl";
+import { useDispatch } from "react-redux";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 
 const loginInfo = {
   email: "",
   password: "",
 };
 
-const LoginForm = () => {
+const LoginForm = ({ setVisible }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [login, setLogin] = useState(loginInfo);
   const { email, password } = login;
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleLoginChange = (e) => {
     e.preventDefault();
@@ -25,6 +37,22 @@ const LoginForm = () => {
       .email("Must be a valid email."),
     password: Yup.string().required("Password is required"),
   });
+
+  const submitLogin = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(`${BACKEND_URL}/login`, {
+        email,
+        password,
+      });
+      // const { message, ...rest } = data;
+      dispatch({ type: "LOGIN", payload: data });
+      navigate("/");
+    } catch (error) {
+      setLoading(false);
+      setError(error.response.data.message);
+    }
+  };
 
   return (
     <div className="login_wrap">
@@ -43,6 +71,7 @@ const LoginForm = () => {
               password,
             }}
             validationSchema={loginValidation}
+            onSubmit={submitLogin}
           >
             {(formik) => (
               <Form>
@@ -68,8 +97,21 @@ const LoginForm = () => {
           <Link to="/forgot" className="forgot_password">
             Forgotten password?
           </Link>
+          <SyncLoader
+            color="#1876f2"
+            loading={loading}
+            size={15}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+          {error && <div className="error_text">{error}</div>}
           <div className="sign_splitter"></div>
-          <button className="blue_btn open_signup">Create Account</button>
+          <button
+            className="blue_btn open_signup"
+            onClick={() => setVisible(true)}
+          >
+            Create Account
+          </button>
         </div>
         <Link to="/" className="sign_extra">
           <b>Create a page </b>

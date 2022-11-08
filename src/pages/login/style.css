@@ -203,6 +203,30 @@
 
 /* ------------Register end------------- */
 
+/* DOB and gender Error start*/
+.reg_grid .input_error {
+  width: 300px;
+  position: absolute;
+  top: 70px;
+}
+
+/* .input_error_select_large {
+  left: 97%;
+  top: 0 !important;
+} */
+/* DOB and gender Error end*/
+
+/* -------- Error and success Style start------ */
+
+.error_text {
+  color: #b94a48;
+}
+.success_text {
+  color: var(--green-color);
+}
+
+/* -------- Error and success Style end------ */
+
 /* ---------Footer---------- */
 .login_footer {
   /* height: 22vh; */
@@ -265,6 +289,9 @@
   .reg_grid select,
   .reg_grid label {
     width: 110px;
+  }
+  .reg_grid .input_error {
+    width: 350px;
   }
 }
 @media (min-width: 650px) {
