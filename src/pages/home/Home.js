@@ -1,12 +1,10 @@
-import React from "react";
+import { useRef, useState } from "react";
 import Header from "../../components/header/Header";
 
-const Home = () => {
+export default function Home() {
   return (
-    <>
+    <div>
       <Header />
-    </>
+    </div>
   );
-};
-
-export default Home;
+}
