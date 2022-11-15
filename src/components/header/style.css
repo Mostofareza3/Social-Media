@@ -358,7 +358,7 @@ header {
 }
 /*------------Search All Menu End-----*/
 
-/*-------User menu----*/
+/*-------User menu start------*/
 
 .mmenu {
   padding: 0 0.3rem;
@@ -477,9 +477,9 @@ header {
   height: 20px;
 }
 
-/*-------User menu----*/
+/*-------User menu end----*/
 
-/*---responsive----------*/
+/*--------responsive----------*/
 @media (max-width: 1295px) {
   .middle_icon {
     width: 90px;
@@ -530,7 +530,7 @@ header {
     display: none;
   }
 }
-/*---responsive----------*/
+
 @media (max-width: 620px) {
   .profile_link {
     display: none;
@@ -579,4 +579,13 @@ header {
     left: -12.5rem;
   }
 }
-/*---responsive----------*/
+/*------responsive----------*/
+
+/* Active Header */
+.active_header {
+  background: var(--light-blue-color);
+}
+
+.active_header svg {
+  fill: var(--blue-color);
+}

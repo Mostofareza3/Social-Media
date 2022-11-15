@@ -193,8 +193,7 @@
   margin: 20px 0 10px 0;
 }
 
-/* 
-.reg_grid label input[type="radio"] {
+/* .reg_grid label input[type="radio"] {
   background-color: red !important;
 }
 .reg_grid label input[type="radio"]:checked:after {
