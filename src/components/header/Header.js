@@ -78,7 +78,7 @@ const Header = () => {
       <div className="header_right">
         <Link to="/" className="profile_link hover1">
           <img src={user?.picture} alt="" />
-          <span>{user && user.first_name}Reza vai</span>
+          <span>{user && user.first_name}</span>
         </Link>
         <div
           className={`circle_icon hover1 ${showAllMenu && "active_header"}`}
