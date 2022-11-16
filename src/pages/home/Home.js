@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import LeftHome from "../../components/home/left/LeftHome";
 import RightHome from "../../components/home/right";
+import Stories from "../../components/home/stories";
 
 export default function Home() {
   const { user } = useSelector((user) => ({ ...user }));
@@ -10,6 +11,9 @@ export default function Home() {
     <div>
       <Header />
       <LeftHome user={user} />
+      <div className="home_middle">
+        <Stories />
+      </div>
       <RightHome user={user} />
     </div>
   );
