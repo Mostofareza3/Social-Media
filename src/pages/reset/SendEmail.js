@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BACKEND_URL from "../../utils/backendUrl";
 
 export default function SendEmail({
   userInfos,
@@ -14,10 +15,7 @@ export default function SendEmail({
   const sendEmail = async () => {
     try {
       setLoading(true);
-      await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/sendResetPasswordCode`,
-        { email }
-      );
+      await axios.post(`${BACKEND_URL}/sendResetPasswordCode`, { email });
       setError("");
       setVisible(2);
       setLoading(false);

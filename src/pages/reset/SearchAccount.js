@@ -1,9 +1,10 @@
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import LoginInput from "../../components/inputs/loginInput";
+// import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
 import axios from "axios";
+import LoginInput from "../../components/inputs/loginInput/LoginInput";
 export default function SearchAccount({
   email,
   setEmail,

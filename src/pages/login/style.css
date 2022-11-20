@@ -7,19 +7,19 @@
   color: var(--color-primary);
 }
 
-.login-1 {
+.login_1 {
   width: 300px;
   margin: 0 auto;
 }
 
-.login-1 span {
+.login_1 span {
   font-size: 20px;
 }
 
-.login-2 {
+.login_2 {
   text-align: center;
 }
-.login-2_wrap {
+.login_2_wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,7 +34,7 @@
   border-radius: 10px;
   user-select: none;
 }
-.login-2_wrap button {
+.login_2_wrap button {
   width: 100%;
   height: 50px;
   font-size: 17px;
@@ -309,20 +309,20 @@
     /* padding: 0 1rem; */
   }
 
-  .login-1 {
+  .login_1 {
     display: flex;
     flex-direction: column;
     width: 50%;
     margin-bottom: 15vh;
   }
-  .login-1 img {
+  .login_1 img {
     width: 300px;
     margin-left: -1.7rem;
   }
-  .login-1 span {
+  .login_1 span {
     font-size: 20px;
   }
-  .login-2_wrap {
+  .login_2_wrap {
     width: 400px;
   }
   .input_wrap {
