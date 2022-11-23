@@ -31,7 +31,7 @@ export default function SendVerification({ user }) {
         onClick={() => {
           sendVerificationLink();
         }}
-        href
+        // href
       >
         click here to resend verification link
       </a>

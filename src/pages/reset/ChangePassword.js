@@ -5,6 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import LoginInput from "../../components/inputs/loginInput/LoginInput";
+import BACKEND_URL from "../../utils/backendUrl";
 export default function ChangePassword({
   password,
   setPassword,
@@ -23,7 +24,7 @@ export default function ChangePassword({
         "Enter a combination of at least six numbers,letters and punctuation marks(such as ! and &)."
       )
       .min(6, "Password must be atleast 6 characters.")
-      .max(36, "Password can't be more than 36 characters"),
+      .max(30, "Password can't be more than 30 characters"),
 
     conf_password: Yup.string()
       .required("Confirm your password.")
@@ -33,7 +34,7 @@ export default function ChangePassword({
   const changePassword = async () => {
     try {
       setLoading(true);
-      await axios.post(`${process.env.REACT_APP_BACKEND_URL}/changePassword`, {
+      await axios.post(`${BACKEND_URL}/changePassword`, {
         email,
         password,
       });

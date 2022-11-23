@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios";
 import LoginInput from "../../components/inputs/loginInput/LoginInput";
+import BACKEND_URL from "../../utils/backendUrl";
 export default function CodeVerification({
   code,
   setCode,
@@ -25,10 +26,7 @@ export default function CodeVerification({
   const verifyCode = async () => {
     try {
       setLoading(true);
-      await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/validateResetCode`,
-        { email, code }
-      );
+      await axios.post(`${BACKEND_URL}/validateResetCode`, { email, code });
       setVisible(3);
       setError("");
       setLoading(false);
@@ -37,7 +35,7 @@ export default function CodeVerification({
       setError(error.response.data.message);
     }
   };
-  console.log(email);
+  // console.log(email);
   return (
     <div className="reset_form">
       <div className="reset_form_header">Code verification</div>
