@@ -1,59 +1,53 @@
 import { Formik, Form } from "formik";
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import LoginInput from "../inputs/loginInput/LoginInput";
-import SyncLoader from "react-spinners/SyncLoader";
+import LoginInput from "../../components/inputs/loginInput";
+import { useState } from "react";
+import DotLoader from "react-spinners/DotLoader";
 import axios from "axios";
-import BACKEND_URL from "../../utils/backendUrl";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
-
-const loginInfo = {
+const loginInfos = {
   email: "",
   password: "",
 };
-
-const LoginForm = ({ setVisible }) => {
+export default function LoginForm({ setVisible }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [login, setLogin] = useState(loginInfo);
+  const [login, setLogin] = useState(loginInfos);
   const { email, password } = login;
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState(false);
-
   const handleLoginChange = (e) => {
-    e.preventDefault();
     const { name, value } = e.target;
     setLogin({ ...login, [name]: value });
   };
-
   const loginValidation = Yup.object({
     email: Yup.string()
       .required("Email address is required.")
-      .email("Must be a valid email."),
+      .email("Must be a valid email.")
+      .max(100),
     password: Yup.string().required("Password is required"),
   });
-
-  const submitLogin = async () => {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const loginSubmit = async () => {
     try {
       setLoading(true);
-      const { data } = await axios.post(`${BACKEND_URL}/login`, {
-        email,
-        password,
-      });
-      // const { message, ...rest } = data;
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/login`,
+        {
+          email,
+          password,
+        }
+      );
       dispatch({ type: "LOGIN", payload: data });
+      Cookies.set("user", JSON.stringify(data));
       navigate("/");
     } catch (error) {
       setLoading(false);
       setError(error.response.data.message);
     }
   };
-
   return (
     <div className="login_wrap">
       <div className="login_1">
@@ -71,25 +65,27 @@ const LoginForm = ({ setVisible }) => {
               password,
             }}
             validationSchema={loginValidation}
-            onSubmit={submitLogin}
+            onSubmit={() => {
+              loginSubmit();
+            }}
           >
             {(formik) => (
               <Form>
                 <LoginInput
-                  placeholder="Email address or phone number"
                   type="text"
                   name="email"
+                  placeholder="Email address or phone number"
                   onChange={handleLoginChange}
                 />
                 <LoginInput
-                  placeholder="Password"
                   type="password"
                   name="password"
+                  placeholder="Password"
                   onChange={handleLoginChange}
                   bottom
                 />
                 <button type="submit" className="blue_btn">
-                  Login
+                  Log In
                 </button>
               </Form>
             )}
@@ -97,13 +93,8 @@ const LoginForm = ({ setVisible }) => {
           <Link to="/reset" className="forgot_password">
             Forgotten password?
           </Link>
-          <SyncLoader
-            color="#1876f2"
-            loading={loading}
-            size={15}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
+          <DotLoader color="#1876f2" loading={loading} size={30} />
+
           {error && <div className="error_text">{error}</div>}
           <div className="sign_splitter"></div>
           <button
@@ -114,12 +105,9 @@ const LoginForm = ({ setVisible }) => {
           </button>
         </div>
         <Link to="/" className="sign_extra">
-          <b>Create a page </b>
-          for a celebrity, brand or business.
+          <b>Create a Page</b> for a celebrity, brand or business.
         </Link>
       </div>
     </div>
   );
-};
-
-export default LoginForm;
+}

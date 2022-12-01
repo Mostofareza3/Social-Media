@@ -1,14 +1,13 @@
 import { useState } from "react";
 import "./style.css";
 import axios from "axios";
-import BACKEND_URL from "../../../utils/backendUrl";
 export default function SendVerification({ user }) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const sendVerificationLink = async () => {
     try {
       const { data } = await axios.post(
-        `${BACKEND_URL}/sendVerification`,
+        `${process.env.REACT_APP_BACKEND_URL}/sendVerification`,
         {},
         {
           headers: {
@@ -31,7 +30,6 @@ export default function SendVerification({ user }) {
         onClick={() => {
           sendVerificationLink();
         }}
-        // href
       >
         click here to resend verification link
       </a>

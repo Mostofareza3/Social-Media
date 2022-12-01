@@ -2,32 +2,30 @@ header {
   position: fixed;
   top: 0;
   height: 56px;
-  z-index: 99;
+  z-index: 9999999999999;
+  background: var(--bg-primary);
   width: 100%;
   box-shadow: 1px 8px 15px -7px var(--shadow-2);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   color: var(--color-primary);
 }
-
-/* -----------------------Header Left-------------------------- */
-
+/*---Header left-----*/
 .header_left {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-left: 10px !important;
+  padding: 5px 1rem;
 }
-
 .circle {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .search {
   display: flex;
   align-items: center;
@@ -37,7 +35,6 @@ header {
   border-radius: 50px;
   cursor: text;
 }
-
 .search input {
   outline: none;
   border: none;
@@ -45,12 +42,12 @@ header {
   font-size: 15px;
   font-family: inherit;
 }
-
 .search input::placeholder {
   transform: translateY(-1px);
 }
+/*---Header left-----*/
 
-/* -----------------------Header Middle-------------------------- */
+/*---Header middle-----*/
 
 .header_middle {
   display: flex;
@@ -58,7 +55,6 @@ header {
   gap: 14px;
   transform: translateX(3px);
 }
-
 .middle_icon {
   position: relative;
   display: flex;
@@ -69,11 +65,9 @@ header {
   border-radius: 10px;
   cursor: pointer;
   transform: translateX(-2px);
-  /* background: red; */
 }
-
 .middle_icon:nth-child(2) {
-  transform: translateX(-2px);
+  transform: translateX(-4px);
 }
 .middle_icon:nth-child(3) {
   transform: translateX(-3px);
@@ -84,39 +78,36 @@ header {
 .middle_icon:nth-child(5) {
   transform: translateX(-5px);
 }
-
 .active {
   border-bottom: 3px solid var(--blue-color);
   border-radius: 0;
   height: 56px;
   transform: translateX(0);
 }
-
 .active svg {
-  transform: translateX(1px) translateY(-1px);
+  transform: translateY(1px) translateX(-1px);
 }
-
 .middle_notification {
   position: absolute;
   top: 3px;
   right: 1.9rem;
   background: #e41e3f;
-  padding: 1px 5px;
   border-radius: 50px;
-  color: #fff;
+  padding: 1px 5px;
   font-size: 13px;
+  color: #fff;
 }
+/*---Header middle-----*/
 
-/* -----------------------Header Right-------------------------- */
+/*---Header right-----*/
 
 .header_right {
   display: flex;
   position: absolute;
-  right: 0px;
+  right: 8px;
   top: 50%;
   transform: translateY(-50%);
 }
-
 .profile_link {
   display: flex;
   align-items: center;
@@ -129,44 +120,41 @@ header {
   line-height: 19px;
   margin-right: 10px;
 }
-
 .profile_link img {
-  width: 28px;
-  height: 28px;
+  width: 28.7px;
+  height: 28.7px;
   border-radius: 50%;
   border: 1px solid #b0b3b8;
   transform: translateX(-1px);
 }
-
 .profile_link span {
   margin-bottom: 3px;
 }
-
 .circle_icon {
   position: relative;
   height: 40px;
   width: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 8px;
   background: var(--bg-third);
-  border-radius: 50%;
   cursor: pointer;
 }
-
 .right_notification {
   position: absolute;
-  background: #e41e3f;
-  top: -5px;
+  top: -6px;
   right: -5px;
+  background: #e41e3f;
   border-radius: 50px;
   padding: 1px 6px;
-  color: #fff;
   font-size: 13px;
+  color: #fff;
 }
+/*---Header right-----*/
 
-/*---------------Search menu start --------------*/
+/*---Search menu-----*/
 .search_area {
   position: absolute;
   align-items: flex-start;
@@ -195,6 +183,7 @@ header {
 }
 .search_area .search input {
   padding-left: 4px;
+  color: var(--color-primary);
 }
 .search_area .search svg {
   transform: translateY(1px);
@@ -225,9 +214,8 @@ header {
   color: var(--blue-color);
 }
 
-/*--------------Search menu End-----*/
-
-/*------Search All Menu start------*/
+/*---Search menu-----*/
+/*---Search All Menu-----*/
 .all_menu {
   position: absolute;
   right: -9rem;
@@ -248,8 +236,8 @@ header {
 }
 .all_menu_wrap {
   display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  gap: 0.3rem;
+  grid-template-columns: 1.7fr 1fr;
+  gap: 1rem;
   overflow-y: auto;
   height: 95%;
 }
@@ -323,8 +311,8 @@ header {
   background: var(--bg-primary);
   margin-right: 1rem;
   border-radius: 10px;
-  height: 530px;
-  width: 190px;
+  height: 550px;
+  width: 170px;
   position: fixed;
   right: 2rem;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -356,9 +344,9 @@ header {
   justify-content: center;
   background: var(--bg-third);
 }
-/*------------Search All Menu End-----*/
+/*---Search All Menu-----*/
 
-/*-------User menu start------*/
+/*-------User menu----*/
 
 .mmenu {
   padding: 0 0.3rem;
@@ -476,10 +464,45 @@ header {
   width: 20px;
   height: 20px;
 }
+.search_user_item i {
+  position: absolute;
+  right: 10px;
+  transform: scale(0.6);
+}
 
-/*-------User menu end----*/
+/*-------User menu----*/
+.search_results {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.search_history {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+.search_user_item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.search_user_item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.search_user_item span {
+  font-weight: 600;
+  font-size: 14px;
+}
 
-/*--------responsive----------*/
+/*---responsive----------*/
 @media (max-width: 1295px) {
   .middle_icon {
     width: 90px;
@@ -530,7 +553,7 @@ header {
     display: none;
   }
 }
-
+/*---responsive----------*/
 @media (max-width: 620px) {
   .profile_link {
     display: none;
@@ -573,19 +596,27 @@ header {
     display: none;
   }
   .mmenu {
-    width: 340px;
+    width: 290px;
   }
   .all_menu {
-    left: -12.5rem;
+    width: 310px;
+    left: -10rem;
+  }
+  .search_area {
+    width: 310px;
   }
 }
-/*------responsive----------*/
+/*---responsive----------*/
 
-/* Active Header */
+/*----Active header----*/
 .active_header {
   background: var(--light-blue-color);
 }
-
 .active_header svg {
   fill: var(--blue-color);
 }
+.active_link {
+  background: var(--light-blue-color);
+  color: var(--blue-color);
+}
+/*----Active header----*/

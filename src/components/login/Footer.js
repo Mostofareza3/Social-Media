@@ -1,21 +1,20 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+export default function Footer() {
   return (
     <footer className="login_footer">
       <div className="login_footer_wrap">
-        <Link to="/">English (UK)</Link>
-        <Link to="/">বাংলা</Link>
-        <Link to="/">অসমীয়া</Link>
-        <Link to="/">हिन्दी</Link>
-        <Link to="/">नेपाली</Link>
-        <Link to="/">Bahasa Indonesia</Link>
+        <Link to="/">English(UK)</Link>
+        <Link to="/">Français(FR)</Link>
         <Link to="/">العربية</Link>
-        <Link to="/">中文(简体)</Link>
-        <Link to="/">Bahasa Melayu</Link>
-        <Link to="/">Español</Link>
+        <Link to="/">ⵜⴰⵎⴰⵣⵉⵖⵜ</Link>
+        <Link to="/">Español (España)</Link>
+        <Link to="/">italiano</Link>
+        <Link to="/">Deutsch</Link>
         <Link to="/">Português (Brasil)</Link>
+        <Link to="/">हिन्दी</Link>
+        <Link to="/">中文(简体)</Link>
+        <Link to="/">日本語</Link>
         <Link to="/" className="footer_square">
           <i className="plus_icon"></i>
         </Link>
@@ -44,7 +43,7 @@ const Footer = () => {
         <Link to="/">Create ad</Link>
         <Link to="/">Create Page</Link>
         <Link to="/">Developers</Link>
-        <Link to="/">Career</Link>
+        <Link to="/">Careers</Link>
         <Link to="/">Privacy</Link>
         <Link to="/">Cookies</Link>
         <Link to="/">
@@ -56,11 +55,9 @@ const Footer = () => {
       </div>
       <div className="login_footer_wrap">
         <Link to="/" style={{ fontSize: "12px", marginTop: "10px" }}>
-          Meta @ 2022
+          Meta © 2022
         </Link>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

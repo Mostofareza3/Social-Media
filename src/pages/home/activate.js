@@ -1,18 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-
+import CreatePost from "../../components/createPost";
+import Header from "../../components/header";
+import LeftHome from "../../components/home/left";
+import RightHome from "../../components/home/right";
+import Stories from "../../components/home/stories";
+import ActivateForm from "./ActivateForm";
 import "./style.css";
 import axios from "axios";
 import Cookies from "js-cookie";
-import Header from "../../components/header/Header";
-import ActivateForm from "./activateForm";
-import LeftHome from "../../components/home/left/LeftHome";
-import Stories from "../../components/home/stories";
-import CreatePost from "../../components/createPost/CreatePost";
-import RightHome from "../../components/home/right";
-import BACKEND_URL from "../../utils/backendUrl";
-
 export default function Activate() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,12 +18,14 @@ export default function Activate() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const { token } = useParams();
-
+  useEffect(() => {
+    activateAccount();
+  }, []);
   const activateAccount = async () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${BACKEND_URL}/activate`,
+        `${process.env.REACT_APP_BACKEND_URL}/activate`,
         { token },
         {
           headers: {
@@ -51,17 +50,12 @@ export default function Activate() {
       }, 3000);
     }
   };
-
-  useEffect(() => {
-    activateAccount();
-  }, []);
-
   return (
     <div className="home">
       {success && (
         <ActivateForm
           type="success"
-          header="Account verification succeeded."
+          header="Account verification succeded."
           text={success}
           loading={loading}
         />

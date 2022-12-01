@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
 import { Form, Formik } from "formik";
 import { useState } from "react";
+import LoginInput from "../../components/inputs/loginInput";
 import SearchAccount from "./SearchAccount";
 import SendEmail from "./SendEmail";
 import CodeVerification from "./CodeVerification";
@@ -28,7 +29,7 @@ export default function Reset() {
     });
     navigate("/login");
   };
-  // console.log(userInfos);
+  console.log(userInfos);
   return (
     <div className="reset">
       <div className="reset_header">

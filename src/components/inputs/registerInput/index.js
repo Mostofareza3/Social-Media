@@ -1,24 +1,19 @@
-import { ErrorMessage, useField } from "formik";
-import { useMediaQuery } from "react-responsive";
 import "./style.css";
-
-const RegisterInput = ({ placeholder, bottom, ...props }) => {
+import { useField, ErrorMessage } from "formik";
+import { useMediaQuery } from "react-responsive";
+export default function RegisterInput({ placeholder, bottom, ...props }) {
   const [field, meta] = useField(props);
-
   const view1 = useMediaQuery({
     query: "(min-width: 539px)",
   });
   const view2 = useMediaQuery({
     query: "(min-width: 850px)",
   });
-
   const view3 = useMediaQuery({
     query: "(min-width: 1170px)",
   });
-
   const test1 = view3 && field.name === "first_name";
   const test2 = view3 && field.name === "last_name";
-
   return (
     <div className="input_wrap register_input_wrap">
       <input
@@ -40,10 +35,10 @@ const RegisterInput = ({ placeholder, bottom, ...props }) => {
       />
       {meta.touched && meta.error && (
         <div
-          className={view3 ? "input_error_desktop" : "input_error"}
+          className={view3 ? "input_error input_error_desktop" : "input_error"}
           style={{
-            transform: "translateY(4px)",
-            left: `${test1 ? "-173%" : test2 ? "107%" : ""}`,
+            transform: "translateY(2px)",
+            left: `${test1 ? "-107%" : test2 ? "107%" : ""}`,
           }}
         >
           {meta.touched && meta.error && <ErrorMessage name={field.name} />}
@@ -60,9 +55,8 @@ const RegisterInput = ({ placeholder, bottom, ...props }) => {
           )}
         </div>
       )}
+
       {meta.touched && meta.error && <i className="error_icon"></i>}
     </div>
   );
-};
-
-export default RegisterInput;
+}
