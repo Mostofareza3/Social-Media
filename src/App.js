@@ -23,7 +23,7 @@ function App() {
   });
   useEffect(() => {
     getAllPosts();
-  }, []);
+  }, [getAllPosts]);
   const getAllPosts = async () => {
     try {
       dispatch({
