@@ -38,7 +38,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
         },
         {
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
           },
         }
       );
@@ -144,6 +144,7 @@ export default function Intro({ detailss, visitor, setOthername }) {
           <a
             href={`https://www.instagram.com/${details?.instagram}`}
             target="_blank"
+            rel="noreferrer"
           >
             {details?.instagram}
           </a>

@@ -1,13 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "./style.css";
-import Picker from "emoji-picker-react";
+
 import EmojiPickerBackgrounds from "./EmojiPickerBackgrounds";
 import AddToYourPost from "./AddToYourPost";
 import ImagePreview from "./ImagePreview";
 import useClickOutside from "../../helpers/clickOutside";
 import { createPost } from "../../functions/post";
 import PulseLoader from "react-spinners/PulseLoader";
-import { useDispatch } from "react-redux";
+
 import PostError from "./PostError";
 import dataURItoBlob from "../../helpers/dataURItoBlob";
 import { uploadImages } from "../../functions/uploadImages";
@@ -36,8 +36,8 @@ export default function CreatePostPopup({
         background,
         text,
         null,
-        user.id,
-        user.token
+        user?.id,
+        user?.token
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -56,21 +56,21 @@ export default function CreatePostPopup({
       const postImages = images.map((img) => {
         return dataURItoBlob(img);
       });
-      const path = `${user.username}/post_images`;
+      const path = `${user?.username}/post_images`;
       let formData = new FormData();
       formData.append("path", path);
       postImages.forEach((image) => {
         formData.append("file", image);
       });
-      const response = await uploadImages(formData, path, user.token);
+      const response = await uploadImages(formData, path, user?.token);
 
       const res = await createPost(
         null,
         null,
         text,
         response,
-        user.id,
-        user.token
+        user?.id,
+        user?.token
       );
       setLoading(false);
       if (res.status === "ok") {
@@ -91,8 +91,8 @@ export default function CreatePostPopup({
         null,
         text,
         null,
-        user.id,
-        user.token
+        user?.id,
+        user?.token
       );
       setLoading(false);
       if (response.status === "ok") {
@@ -126,10 +126,10 @@ export default function CreatePostPopup({
           <span>Create Post</span>
         </div>
         <div className="box_profile">
-          <img src={user.picture} alt="" className="box_profile_img" />
+          <img src={user?.picture} alt="" className="box_profile_img" />
           <div className="box_col">
             <div className="box_profile_name">
-              {user.first_name} {user.last_name}
+              {user?.first_name} {user?.last_name}
             </div>
             <div className="box_privacy">
               <img src="../../../icons/public.png" alt="" />

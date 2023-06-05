@@ -24,19 +24,19 @@ export default function Friendship({ friendshipp, profileid }) {
   const { user } = useSelector((state) => ({ ...state }));
   const addFriendHandler = async () => {
     setFriendship({ ...friendship, requestSent: true, following: true });
-    await addFriend(profileid, user.token);
+    await addFriend(profileid, user?.token);
   };
   const cancelRequestHandler = async () => {
     setFriendship({ ...friendship, requestSent: false, following: false });
-    await cancelRequest(profileid, user.token);
+    await cancelRequest(profileid, user?.token);
   };
   const followHandler = async () => {
     setFriendship({ ...friendship, following: true });
-    await follow(profileid, user.token);
+    await follow(profileid, user?.token);
   };
   const unfollowHandler = async () => {
     setFriendship({ ...friendship, following: false });
-    await unfollow(profileid, user.token);
+    await unfollow(profileid, user?.token);
   };
   const acceptRequestHanlder = async () => {
     setFriendship({
@@ -46,7 +46,7 @@ export default function Friendship({ friendshipp, profileid }) {
       requestSent: false,
       requestReceived: false,
     });
-    await acceptRequest(profileid, user.token);
+    await acceptRequest(profileid, user?.token);
   };
   const unfriendHandler = async () => {
     setFriendship({
@@ -56,7 +56,7 @@ export default function Friendship({ friendshipp, profileid }) {
       requestSent: false,
       requestReceived: false,
     });
-    await unfriend(profileid, user.token);
+    await unfriend(profileid, user?.token);
   };
   const deleteRequestHanlder = async () => {
     setFriendship({
@@ -66,7 +66,7 @@ export default function Friendship({ friendshipp, profileid }) {
       requestSent: false,
       requestReceived: false,
     });
-    await deleteRequest(profileid, user.token);
+    await deleteRequest(profileid, user?.token);
   };
 
   return (

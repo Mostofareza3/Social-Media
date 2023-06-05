@@ -8,6 +8,7 @@ import {
   search,
 } from "../../functions/user";
 import { Link } from "react-router-dom";
+import { useCallback } from "react";
 export default function SearchMenu({ color, setShowSearchMenu, token }) {
   const [iconVisible, setIconVisible] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,13 +19,15 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
   useClickOutside(menu, () => {
     setShowSearchMenu(false);
   });
-  useEffect(() => {
-    getHistory();
-  }, []);
-  const getHistory = async () => {
+  const getHistory = useCallback(async () => {
     const res = await getSearchHistory(token);
     setSearchHistory(res);
-  };
+  }, [token]);
+
+  useEffect(() => {
+    getHistory();
+  }, [getHistory]);
+
   useEffect(() => {
     input.current.focus();
   }, []);
@@ -84,35 +87,35 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
           />
         </div>
       </div>
-      {results == "" && (
+      {results === "" && (
         <div className="search_history_header">
           <span>Recent searches</span>
-          <a>Edit</a>
+          <a href="/">Edit</a>
         </div>
       )}
       <div className="search_history scrollbar">
         {searchHistory &&
-          results == "" &&
+          results === "" &&
           searchHistory
             .sort((a, b) => {
               return new Date(b.createdAt) - new Date(a.createdAt);
             })
             .map((user) => (
-              <div className="search_user_item hover1" key={user._id}>
+              <div className="search_user_item hover1" key={user?._id}>
                 <Link
                   className="flex"
-                  to={`/profile/${user.user.username}`}
-                  onClick={() => addToSearchHistoryHandler(user.user._id)}
+                  to={`/profile/${user?.user?.username}`}
+                  onClick={() => addToSearchHistoryHandler(user?.user?._id)}
                 >
-                  <img src={user.user.picture} alt="" />
+                  <img src={user?.user?.picture} alt="" />
                   <span>
-                    {user.user.first_name} {user.user.last_name}
+                    {user?.user?.first_name} {user?.user?.last_name}
                   </span>
                 </Link>
                 <i
                   className="exit_icon"
                   onClick={() => {
-                    handleRemove(user.user._id);
+                    handleRemove(user?.user?._id);
                   }}
                 ></i>
               </div>
@@ -122,14 +125,14 @@ export default function SearchMenu({ color, setShowSearchMenu, token }) {
         {results &&
           results.map((user) => (
             <Link
-              to={`/profile/${user.username}`}
+              to={`/profile/${user?.username}`}
               className="search_user_item hover1"
-              onClick={() => addToSearchHistoryHandler(user._id)}
-              key={user._id}
+              onClick={() => addToSearchHistoryHandler(user?._id)}
+              key={user?._id}
             >
-              <img src={user.picture} alt="" />
+              <img src={user?.picture} alt="" />
               <span>
-                {user.first_name} {user.last_name}
+                {user?.first_name} {user?.last_name}
               </span>
             </Link>
           ))}

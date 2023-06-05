@@ -77,7 +77,7 @@ export default function ProfilePicture({ username, setShow, pRef, photos }) {
           <div className="old_pictures">
             {photos
               .filter(
-                (img) => img.folder === `${user.username}/profile_pictures`
+                (img) => img.folder === `${user?.username}/profile_pictures`
               )
               .map((photo) => (
                 <img
@@ -92,7 +92,7 @@ export default function ProfilePicture({ username, setShow, pRef, photos }) {
           <div className="old_pictures">
             {photos
               .filter(
-                (img) => img.folder !== `${user.username}/profile_pictures`
+                (img) => img.folder !== `${user?.username}/profile_pictures`
               )
               .map((photo) => (
                 <img

@@ -2,9 +2,7 @@ import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import Cookies from "js-cookie";
-import { Form, Formik } from "formik";
 import { useState } from "react";
-import LoginInput from "../../components/inputs/loginInput";
 import SearchAccount from "./SearchAccount";
 import SendEmail from "./SendEmail";
 import CodeVerification from "./CodeVerification";
@@ -15,7 +13,7 @@ export default function Reset() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible, setVisible] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
@@ -37,7 +35,7 @@ export default function Reset() {
         {user ? (
           <div className="right_reset">
             <Link to="/profile">
-              <img src={user.picture} alt="" />
+              <img src={user?.picture} alt="" />
             </Link>
             <button
               className="blue_btn"

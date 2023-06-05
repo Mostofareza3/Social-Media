@@ -26,7 +26,7 @@ export default function Profile({ getAllPosts }) {
   const navigate = useNavigate();
   const { user } = useSelector((state) => ({ ...state }));
   const [photos, setPhotos] = useState({});
-  var userName = username === undefined ? user.username : username;
+  var userName = username === undefined ? user?.username : username;
 
   const [{ loading, error, profile }, dispatch] = useReducer(profileReducer, {
     loading: false,
@@ -40,7 +40,7 @@ export default function Profile({ getAllPosts }) {
     setOthername(profile?.details?.otherName);
   }, [profile]);
 
-  var visitor = userName === user.username ? false : true;
+  var visitor = userName === user?.username ? false : true;
   const [othername, setOthername] = useState();
   const path = `${userName}/*`;
   const max = 30;
@@ -55,11 +55,11 @@ export default function Profile({ getAllPosts }) {
         `${process.env.REACT_APP_BACKEND_URL}/getProfile/${userName}`,
         {
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
           },
         }
       );
-      if (data.ok === false) {
+      if (data?.ok === false) {
         navigate("/profile");
       } else {
         try {
@@ -68,7 +68,7 @@ export default function Profile({ getAllPosts }) {
             { path, sort, max },
             {
               headers: {
-                Authorization: `Bearer ${user.token}`,
+                Authorization: `Bearer ${user?.token}`,
               },
             }
           );
@@ -84,7 +84,7 @@ export default function Profile({ getAllPosts }) {
     } catch (error) {
       dispatch({
         type: "PROFILE_ERROR",
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message,
       });
     }
   };
@@ -281,7 +281,7 @@ export default function Profile({ getAllPosts }) {
                     />
                     <Photos
                       username={userName}
-                      token={user.token}
+                      token={user?.token}
                       photos={photos}
                     />
                     <Friends friends={profile.friends} />

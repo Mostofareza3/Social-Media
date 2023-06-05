@@ -1,5 +1,4 @@
 import { Form, Formik } from "formik";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import LoginInput from "../../components/inputs/loginInput";
 import * as Yup from "yup";
@@ -33,7 +32,7 @@ export default function SearchAccount({
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
     }
   };
   return (

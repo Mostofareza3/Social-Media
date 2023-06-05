@@ -22,7 +22,7 @@ export default function Home({ setVisible, posts, loading, getAllPosts }) {
       <LeftHome user={user} />
       <div className="home_middle" ref={middle}>
         <Stories />
-        {user.verified === false && <SendVerification user={user} />}
+        {user?.verified === false && <SendVerification user={user} />}
         <CreatePost user={user} setVisible={setVisible} />
         {loading ? (
           <div className="sekelton_loader">

@@ -62,7 +62,7 @@ export default function Header({ page, getAllPosts }) {
         <SearchMenu
           color={color}
           setShowSearchMenu={setShowSearchMenu}
-          token={user.token}
+          token={user?.token}
         />
       )}
       <div className="header_middle">

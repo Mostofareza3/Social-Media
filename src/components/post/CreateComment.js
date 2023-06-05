@@ -51,17 +51,17 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
       if (commentImage != "") {
         setLoading(true);
         const img = dataURItoBlob(commentImage);
-        const path = `${user.username}/post_images/${postId}`;
+        const path = `${user?.username}/post_images/${postId}`;
         let formData = new FormData();
         formData.append("path", path);
         formData.append("file", img);
-        const imgComment = await uploadImages(formData, path, user.token);
+        const imgComment = await uploadImages(formData, path, user?.token);
 
         const comments = await comment(
           postId,
           text,
           imgComment[0].url,
-          user.token
+          user?.token
         );
         setComments(comments);
         setCount((prev) => ++prev);
@@ -71,7 +71,7 @@ export default function CreateComment({ user, postId, setComments, setCount }) {
       } else {
         setLoading(true);
 
-        const comments = await comment(postId, text, "", user.token);
+        const comments = await comment(postId, text, "", user?.token);
         setComments(comments);
         setCount((prev) => ++prev);
         setLoading(false);

@@ -40,7 +40,7 @@ export default function ChangePassword({
       navigate("/");
     } catch (error) {
       setLoading(false);
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
     }
   };
   return (

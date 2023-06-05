@@ -25,7 +25,7 @@ export const createPost = async (
     );
     return { status: "ok", data };
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const reactPost = async (postId, react, token) => {
@@ -44,7 +44,7 @@ export const reactPost = async (postId, react, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const getReacts = async (postId, token) => {
@@ -60,7 +60,7 @@ export const getReacts = async (postId, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const comment = async (postId, comment, image, token) => {
@@ -81,7 +81,7 @@ export const comment = async (postId, comment, image, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const savePost = async (postId, token) => {
@@ -98,7 +98,7 @@ export const savePost = async (postId, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const deletePost = async (postId, token) => {
@@ -114,6 +114,6 @@ export const deletePost = async (postId, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };

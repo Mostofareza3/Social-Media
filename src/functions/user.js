@@ -14,7 +14,7 @@ export const updateprofilePicture = async (url, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const updateCover = async (url, token) => {
@@ -32,7 +32,7 @@ export const updateCover = async (url, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const addFriend = async (id, token) => {
@@ -49,7 +49,7 @@ export const addFriend = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const cancelRequest = async (id, token) => {
@@ -66,7 +66,7 @@ export const cancelRequest = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const follow = async (id, token) => {
@@ -83,8 +83,8 @@ export const follow = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    console.log(error.response.data.message);
-    return error.response.data.message;
+    
+    return error?.response?.data?.message;
   }
 };
 export const unfollow = async (id, token) => {
@@ -101,7 +101,7 @@ export const unfollow = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const acceptRequest = async (id, token) => {
@@ -118,7 +118,7 @@ export const acceptRequest = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const unfriend = async (id, token) => {
@@ -135,7 +135,7 @@ export const unfriend = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const deleteRequest = async (id, token) => {
@@ -152,7 +152,7 @@ export const deleteRequest = async (id, token) => {
     );
     return "ok";
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const search = async (searchTerm, token) => {
@@ -169,7 +169,7 @@ export const search = async (searchTerm, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const addToSearchHistory = async (searchUser, token) => {
@@ -186,7 +186,7 @@ export const addToSearchHistory = async (searchUser, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const getSearchHistory = async (token) => {
@@ -202,7 +202,7 @@ export const getSearchHistory = async (token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const removeFromSearch = async (searchUser, token) => {
@@ -219,7 +219,7 @@ export const removeFromSearch = async (searchUser, token) => {
     );
     return data;
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };
 export const getFriendsPageInfos = async (token) => {
@@ -235,6 +235,6 @@ export const getFriendsPageInfos = async (token) => {
     );
     return { status: "ok", data };
   } catch (error) {
-    return error.response.data.message;
+    return error?.response?.data?.message;
   }
 };

@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import Activate from "./pages/home/activate";
 import Reset from "./pages/reset";
 import CreatePostPopup from "./components/createPostPopup";
-import { useEffect, useReducer, useState } from "react";
+import { useCallback, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
@@ -21,10 +21,7 @@ function App() {
     posts: [],
     error: "",
   });
-  useEffect(() => {
-    getAllPosts();
-  }, [getAllPosts]);
-  const getAllPosts = async () => {
+  const getAllPosts = useCallback(async () => {
     try {
       dispatch({
         type: "POSTS_REQUEST",
@@ -33,7 +30,7 @@ function App() {
         `${process.env.REACT_APP_BACKEND_URL}/getAllposts`,
         {
           headers: {
-            Authorization: `Bearer ${user.token}`,
+            Authorization: `Bearer ${user?.token}`,
           },
         }
       );
@@ -44,10 +41,14 @@ function App() {
     } catch (error) {
       dispatch({
         type: "POSTS_ERROR",
-        payload: error.response.data.message,
+        payload: error?.response?.data?.message,
       });
     }
-  };
+  }, [user?.token]);
+
+  useEffect(() => {
+    getAllPosts();
+  }, [getAllPosts]);
   return (
     <div className={darkTheme && "dark"}>
       {visible && (

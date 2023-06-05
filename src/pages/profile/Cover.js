@@ -77,20 +77,20 @@ export default function Cover({ cover, visitor, photos }) {
       setLoading(true);
       let img = await getCroppedImage();
       let blob = await fetch(img).then((b) => b.blob());
-      const path = `${user.username}/cover_pictures`;
+      const path = `${user?.username}/cover_pictures`;
       let formData = new FormData();
       formData.append("file", blob);
       formData.append("path", path);
-      const res = await uploadImages(formData, path, user.token);
-      const updated_picture = await updateCover(res[0].url, user.token);
+      const res = await uploadImages(formData, path, user?.token);
+      const updated_picture = await updateCover(res[0].url, user?.token);
       if (updated_picture === "ok") {
         const new_post = await createPost(
           "coverPicture",
           null,
           null,
           res,
-          user.id,
-          user.token
+          user?.id,
+          user?.token
         );
         if (new_post.status === "ok") {
           setLoading(false);

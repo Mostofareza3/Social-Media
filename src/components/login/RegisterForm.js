@@ -90,7 +90,7 @@ export default function RegisterForm({ setVisible }) {
         }
       );
       setError("");
-      setSuccess(data.message);
+      setSuccess(data?.message);
       const { message, ...rest } = data;
       setTimeout(() => {
         dispatch({ type: "LOGIN", payload: rest });
@@ -100,7 +100,7 @@ export default function RegisterForm({ setVisible }) {
     } catch (error) {
       setLoading(false);
       setSuccess("");
-      setError(error.response.data.message);
+      setError(error?.response?.data?.message);
     }
   };
   return (
