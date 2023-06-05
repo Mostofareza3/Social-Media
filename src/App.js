@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
 import Home from "./pages/home";
-import LoggedInRoutes from "./routes/LoggedInRoutes";
+// import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 import { useSelector } from "react-redux";
 import Activate from "./pages/home/activate";
@@ -12,6 +12,7 @@ import { useCallback, useEffect, useReducer, useState } from "react";
 import axios from "axios";
 import { postsReducer } from "./functions/reducers";
 import Friends from "./pages/friends";
+import LoggedInRoutes from "./routes/LoggedInRoutes";
 
 function App() {
   const [visible, setVisible] = useState(false);
