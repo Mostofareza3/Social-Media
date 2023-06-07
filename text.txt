@@ -4,9 +4,8 @@
   "private": true,
   "proxy": "https://facebook-backend-0kzy.onrender.com",
   "dependencies": {
-
       npm i axios emoji-picker-react file-saver formik js-cookie react
-     npm i react-easy-crop react-loading-skeleton react-moment react-redux
+     npm i react-easy-crop react-loading-skeleton react-moment react-redux yup
      npm i react-responsive react-router-dom react-spinners redux yup
 
     "@testing-library/jest-dom": "^5.16.2",
